@@ -3,16 +3,18 @@ package main
 import (
 	"log"
 
-	"sbgis.com/nwis/things"
+	"sbgis.com/nwis/datastreams"
 )
 
 func main() {
-	message, err := things.LoadThings()
+	//	message, err := things.LoadThings()
 
-	if err != nil {
-		log.Println(err)
-		return
-	}
+	//	if err != nil {
+	//		log.Println(err)
+	//		return
+	//	}
+
+	message, _ := datastreams.LoadDataStream()
 
 	log.Println(message)
 }
