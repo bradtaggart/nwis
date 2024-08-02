@@ -1,6 +1,6 @@
-package things
+package things_types
 
-type thing struct {
+type Thing struct {
 	Selflink    string `json:"@iot.selfLink"`
 	ID          string `json:"@iot.id"`
 	Name        string `json:"name"`
@@ -29,6 +29,6 @@ type thing struct {
 	DatastreamLink string `json:"Datastreams@iot.navigationLink"`
 }
 
-type thingsList struct {
-	Value []thing `json:"value"`
+type ThingsList struct {
+	Value []Thing `json:"value"`
 }
