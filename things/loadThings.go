@@ -6,12 +6,10 @@ import (
 	"io"
 	"log"
 	"net/http"
-
-	things_types "sbgis.com/nwis/things/types"
 )
 
 func LoadThings() (string, error) {
-	var data things_types.ThingsList
+	var data ThingsList
 	resp, err := http.Get("https://labs.waterdata.usgs.gov/sta/v1.1/Things")
 
 	if err != nil {
@@ -32,7 +30,7 @@ func LoadThings() (string, error) {
 	}
 
 	for i := range data.Value {
-		fmt.Println(data.Value[i].ID, data.Value[i].Name, data.Value[i].Description)
+		fmt.Println("ID:", data.Value[i].ID, "Name:", data.Value[i].Name, "Descritption:", data.Value[i].Description)
 	}
 
 	fmt.Println("")
