@@ -30,3 +30,7 @@ type Properties struct {
 	DownstreamMainstemURL    string  `json:"downstreamMainstemURL"`
 	MainstemNameAtOutletGNIS int     `json:"mainstemNameAtOutletGNIS"`
 }
+
+type ValueList struct {
+	Value []Location `json:"value"`
+}
