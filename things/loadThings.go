@@ -30,7 +30,7 @@ func LoadThings() (string, error) {
 	}
 
 	for i := range data.Value {
-		fmt.Println("ID:", data.Value[i].ID, "Name:", data.Value[i].Name, "Descritption:", data.Value[i].Description)
+		fmt.Println("ID:", data.Value[i].ID, "Name:", data.Value[i].Name, "Description:", data.Value[i].Description)
 	}
 
 	fmt.Println("")
