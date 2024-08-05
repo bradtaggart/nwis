@@ -8,25 +8,26 @@ import (
 	"net/http"
 )
 
-func LoadThings() (string, error) {
+func LoadThings(url string) (*ThingsList, error) {
 	var data ThingsList
-	resp, err := http.Get("https://labs.waterdata.usgs.gov/sta/v1.1/Things")
+
+	resp, err := http.Get(url)
 
 	if err != nil {
 		log.Printf("Request Failed: %s", err)
-		return "", err
+		return &data, err
 	}
 	defer resp.Body.Close()
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		log.Printf("Reading body failed: %s", err)
-		return "", err
+		return &data, err
 	}
 
-	err2 := json.Unmarshal([]byte(string(body)), &data)
-	if err2 != nil {
-		log.Println(err2)
-		return "", err
+	err = json.Unmarshal([]byte(string(body)), &data)
+	if err != nil {
+		log.Println(err)
+		return &data, err
 	}
 
 	for i := range data.Value {
@@ -35,5 +36,5 @@ func LoadThings() (string, error) {
 
 	fmt.Println("")
 
-	return "ok", nil
+	return &data, nil
 }
